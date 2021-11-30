@@ -1,0 +1,6 @@
+things to be done:
+1)payment integration using Stripe API
+2)form for posting data
+3)couting no of people,organizations from data
+4)user profile page
+5)password reset

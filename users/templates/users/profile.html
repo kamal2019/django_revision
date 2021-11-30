@@ -1,0 +1,59 @@
+{% extends "post/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<main role="main" class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="content-section">
+          <div class="media">
+            <img style='height:50% ; width:20% '; class="rounded-circle account-img img-fluid " src="{{ user.profile.image.url }}">
+            <div class="media-body">
+              <h2 class="account-heading">&nbsp;{{ user.username }}</h2>
+              <p class="text-secondary">  &nbsp;  {{ user.email }}</p>
+              <p class="text-secondary">  &nbsp;  {{ user.Phone }}</p>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+      <div class="col-md-12">
+        <h2>Latest Posts</h2>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+        {% for post in posts %}
+        <div class="card">
+            <div class="card-header">
+                <a class="article-title" href="{% url 'post-detail' post.id %}"> {{ post.title }} Post No. {{post.id}}</a>
+            </div>
+            <div class="card-body">
+                <h4><a  href="#">{{ post.author }}</a></h4>
+                <small class="text-muted">{{ post.date_posted }}</small>
+                <br>
+              <blockquote class="blockquote mb-0">
+                <p>Type of food:{{ post.type_food }}</p>
+                <p> Pickup Location:{{ post.pickup_location }}</p>
+                <p>Food remains fresh for:{{post.food_fresh}} hours</p>
+                <p>Food can serve:{{post.served_people}} number of people</p>
+                <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+              </blockquote>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+      </div>
+    </div>
+</main>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+{% endblock content%}
+

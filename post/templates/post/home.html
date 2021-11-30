@@ -1,0 +1,162 @@
+{% extends "post/base.html" %}
+{% block content %}
+<!-- sliding images -->
+<section id="showcase">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item carousel-image-1 active">
+          <div class="container">
+            <div class="carousel-caption d-none d-sm-block text-right mb-5">
+              
+              <p class="lead">At least 7.8 per cent of Nepalis are undernourished as they do not possess adequate food. The food is also found lacking in quality and quantity.</p>
+              {% if user.is_authenticated %}
+              <a href="{% url 'post-share' %}" class="btn btn-danger btn-lg">Help</a>
+              {% else %}
+              <a href="{% url 'post-share' %}" class="btn btn-danger btn-lg">Sign Up and Help</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item carousel-image-2">
+          <div class="container">
+            <div class="carousel-caption d-none d-sm-block mb-5">
+              
+              <p class="lead">At least 7.8 per cent of Nepalis are undernourished as they do not possess adequate food. The food is also found lacking in quality and quantity.</p>
+              <a href="{% url 'post-share' %}" class="btn btn-primary btn-lg">Help</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item carousel-image-3">
+          <div class="container">
+            <div class="carousel-caption d-none d-sm-block text-right mb-5">
+              
+              <p class="lead">At least 7.8 per cent of Nepalis are undernourished as they do not possess adequate food. The food is also found lacking in quality and quantity.</p>
+              <a href="{% url 'post-share' %}" class="btn btn-success btn-lg">Help </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+
+      <a href="#myCarousel" data-slide="next" class="carousel-control-next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+<script>
+  // Get the current year for the copyright
+  $('#year').text(new Date().getFullYear());
+
+  // Configure Slider
+  $('.carousel').carousel({
+    interval: 6000,
+    pause: 'hover'
+  });
+
+  // Lightbox Init
+  $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+  });
+
+  // Video Play
+  $(function () {
+    // Auto play modal video
+    $(".video").click(function () {
+      var theModal = $(this).data("target"),
+        videoSRC = $(this).attr("data-video"),
+        videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
+      $(theModal + ' iframe').attr('src', videoSRCauto);
+      $(theModal + ' button.close').click(function () {
+        $(theModal + ' iframe').attr('src', videoSRC);
+      });
+    });
+  });
+
+</script>
+
+  </section>
+<!-- sliding images finished -->
+<!-- posts -->
+<section id="home-icons" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-newspaper fa-3x mb-2"></i>
+          <h3>Global News 1</h3>
+          <p>Food waste ranks as a top emitter of greenhouse gases estimated at 3.3 billion tons of carbon dioxide released into the atmosphere each year.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-newspaper fa-3x mb-2"></i>
+          <h3>Global News 2</h3>
+          <p>3.5 billion acres of land, 28 percent of the world’s agricultural area, is used annually to produce food that’s never eaten.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="fas fa-newspaper fa-3x mb-2"></i>
+          <h3>Global News 3</h3>
+          <p>More than 20% of all cultivated land, 30% of forests and 10%of grasslands are undergoing degradation</p>
+        </div>
+      </div>
+    </div>
+</section>
+<!-- posts finished -->
+
+<!--  -->
+<section id="home-heading" class="p-5">
+    <div class="dark-overlay">
+      <div class="row">
+        <div class="col">
+          <div class="container pt-5">
+            <h1>Lets get started and help millons of dreams !!</h1>
+            <p class="d-none d-md-block">At least 7.8 per cent of Nepalis are undernourished as they do not possess adequate food. The food is also found lacking in quality and quantity.</p>
+            <p class="d-none d-md-block">Overweight and obesity increases with wealth and household food ... Nepali obese children may as well be susceptible to such diseases.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<!--  -->
+<section id="facts">
+  <div class="container" data-aos="fade-up">
+
+    <header class="section-header">
+      <h3>Facts</h3>
+      <p>These are the total no of record of our site till</p>
+    </header>
+
+    <div class="row counters">
+
+      <div class="col-lg-3 col-6 text-center">
+        <span data-toggle="counter-up">{{total_posts}}</span>
+        <p>No of Posts</p>
+      </div>
+
+      <div class="col-lg-3 col-6 text-center">
+        <span data-toggle="counter-up">{{total_organization}}</span>
+        <p>Social Organizations</p>
+      </div>
+
+      <div class="col-lg-3 col-6 text-center">
+        <span data-toggle="counter-up">1,364</span>
+        <p>People Served </p>
+      </div>
+
+      <div class="col-lg-3 col-6 text-center">
+        <span data-toggle="counter-up">18</span>
+        <p>Financial Help</p>
+      </div>
+
+    </div>
+  </div>
+</section><!-- End Facts Section -->
+
+{% endblock content %}

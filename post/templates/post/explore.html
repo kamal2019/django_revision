@@ -1,0 +1,52 @@
+{% extends "post/base.html" %}
+{% block content %}
+<br>
+<main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8">
+          <h2>Latest Posts</h2>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+        {% for post in posts %}
+        <div class="card">
+            <div class="card-header">
+                <a class="article-title" href="{% url 'post-detail' post.id %}"> {{ post.title }} Post No. {{post.id}}</a>
+            </div>
+            <div class="card-body">
+                <h4><a  href="#">{{ post.author }}</a></h4>
+                <small class="text-muted">{{ post.date_posted }}</small>
+                <br>
+              <blockquote class="blockquote mb-0">
+                <p>Type of food:{{ post.type_food }}</p>
+                <p> Pickup Location:{{ post.pickup_location }}</p>
+                <p>Food remains fresh for:{{post.food_fresh}} hours</p>
+                <p>Food can serve:{{post.served_people}} number of people</p>
+                <!-- <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer> -->
+              </blockquote>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+      </div>
+      <div class="col-md-4">
+        <div class="content-section">
+          <h3>Financial Help</h3>
+          <p class='text-muted'>You can proceed for financial help to the social Organizations
+            <ul class="list-group">
+              
+              <li class="list-group-item list-group-item-dark">List of Social Organizations</li>
+              {% for org in organizations %}
+              <li class="list-group-item list-group-item-light">{{org.org_name}}    &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;   <a href="{% url 'post-pay' %}"><button type="button" class="btn btn-warning text-right" >Go to Payment</button></a> </li>
+              {% endfor %}
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock content%}

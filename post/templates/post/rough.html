@@ -1,0 +1,20 @@
+{% extends "post/base.html" %}
+{% block content %}
+    {% for post in posts %}
+    <article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+        <a class="mr-2" href="#">{{ post.author }}</a>
+        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+        Type of food:<p class="article-content">{{ post.type_food }}</p>
+       Pickup Location: <p class="article-content">{{ post.pickup_location }}</p>
+        Food remains fresh:<p class="article-content">{{ post.food_fresh }}</p>
+        No. of people Food can serve:<p class="article-content">{{ post.served_people }}</p>
+        Number of Clothes:<p class="article-content">{{ post.clothes_no }}</p>
+        Agegroup for Clothes:<p class="article-content">{{ post.agegroup }}</p>
+    </div>
+    </article>
+    {% endfor %} 
+{% endblock content%}

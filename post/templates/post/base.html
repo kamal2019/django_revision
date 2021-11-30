@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+    <script src="../../static/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <img src="../../static/images/logo.JPG" width="60" alt="" class="d-inline-block align-middle mr-2">
+        
+                <a class="navbar-brand text-light" href="{% url 'post-home' %}">Savefood</a>
+                <button class="navbar-toggler"  data-toggle="collapse" data-target="#navbarCollapse" >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+        
+        
+                        <a class="nav-item nav-link text-light" href="{% url 'post-home' %}">Home</a> &nbsp &nbsp &nbsp &nbsp
+                        <a class="nav-item nav-link text-light" href="{% url 'post-explore' %}">Explore</a> &nbsp &nbsp &nbsp &nbsp
+                        <a class="nav-item nav-link text-light" href="{% url 'post-create' %}">Share</a>
+        
+        
+                    </div>
+                </div>
+                <form class="form-inline">
+                    <div class="container"> 
+                      {% if user.is_authenticated %}
+                      <button class="btn btn-md btn-outline-success"><a href="#" class="text-success card-link text-light"><i class="fas fa-sign-in-alt"></i> Logged In as {{user.username}}</a></button>
+                      <button class="btn btn-md btn-outline-success"><a href="{% url 'logout' %}" class="text-success card-link text-light">Logout</a></button>
+                      
+                      {% else %}
+                        <button class="btn btn-md btn-outline-success"><a href="{% url 'login' %}" class="text-success card-link text-light">Login</a></button>
+                        <button class="btn btn-md btn-outline-success"><a href="{% url 'register' %}" class="text-success card-link text-light">Register</a></button>
+                      {% endif %}
+                    </div>
+                </form>
+              
+    </nav>
+    <br>
+    <br>
+    <!-- sliding image -->
+    
+    <!-- block content -->
+    {% block content %}{% endblock %}
+
+    <!-- footer -->
+    <footer>
+        <div class="container-fluid p-0">
+          <div class="row text-left">
+            <div class="col-md-5 col-sm-5">
+              <h4 class="text-light">About us</h4>
+              <p class="text-muted">We are Non-Profit Organization working to help people from people</p>
+              <p class="pt-4 text-muted">Copyright ©2020 All rights reserved | This Website is made by
+                <span> Sushant Sapkota</span>
+              </p>
+            </div>
+            <div class="col-md-5 col-sm-12">
+              <h4 class="text-light">Support Us</h4>
+              <button class="btn btn-md btn-outline-success"><a href="{% url 'post-create' %}" class="text-success card-link text-light">Share</a></button>
+            </div>
+            <div class="col-md-2 col-sm-12">
+              <h4 class="text-light">Follow Us</h4>
+              <p class="text-muted">Let us be social</p>
+              <div class="column text-light">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-youtube"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+</body>
+</html>
